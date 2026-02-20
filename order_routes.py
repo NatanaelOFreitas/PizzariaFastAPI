@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-order_router = APIRouter(prefix="/order", tags=["order"])
+order_router = APIRouter(prefix="/pedidos", tags=["pedidos"])
 
 @order_router.get("/")
-async def order():
+async def pedidos():
     return {"mensagem" : "Essa é a rota de pedidos"}
