@@ -26,14 +26,8 @@ class Usuario(Base):
 class Pedido(Base):
     __tablename__ = "pedidos"
 
-    STATUS_PEDIDOS = (
-        ("PENDENTE", "PENDENTE"),
-        ("CANCELADO", "CANCELADO"),
-        ("FINALIZZADO", "FINALIZADP")
-    )
-
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    status = Column("status", ChoiceType(choices=STATUS_PEDIDOS)) #Pendente, Cancelado, Finalizado
+    status = Column("status", String) #Pendente, Cancelado, Finalizado
     usuario = Column("usuario", ForeignKey("usuarios.id"))
     preco = Column("preco", Float)
     #itens
@@ -46,17 +40,10 @@ class Pedido(Base):
 class ItemPedido(Base):
     __tablename__ = "itens_pedidos"
 
-    TAMANHOS = (
-        ("PEQUENA", "PEQUENA"),
-        ("MEDIA", "MEDIA"),
-        ("GRANDE", "GRANDE"),
-        ("GIGANTE", "GIGANTE")
-    )
-
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     quantidade = Column("quantidade", Integer)
     sabor = Column("sabor", String)
-    tamanho = Column("tamanho", ChoiceType(choices=TAMANHOS))
+    tamanho = Column("tamanho", String)
     preco_unitario = Column("preco_unitario", Float)
     pedido = Column("pedido", ForeignKey("pedidos.id"))
 
