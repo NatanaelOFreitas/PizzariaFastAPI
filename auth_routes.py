@@ -23,8 +23,9 @@ def autenticar_usuario(email, senha, session):
         return False
     return usuario
 
-#def verificar_token(token, session: Session = Depends(pegar_session)):
-    #usuario = 
+def verificar_token(token, session: Session = Depends(pegar_session)):
+    usuario = session.query(Usuario).filter(Usuario.id==1).first()
+    return usuario
 
 @auth_router.get("/")
 async def auth():
